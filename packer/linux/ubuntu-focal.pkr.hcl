@@ -47,7 +47,8 @@ locals {
       "x86_64" = "amd64"
       "arm64"  = "aarch64"
     },
-    var.arch
+    var.arch,
+    "amd64"
   )
 }
 
@@ -103,7 +104,8 @@ build {
     extra_arguments = [
       "--skip-tags",
       "reboot",
-      "-e arch=${local.package_arch}",
+      "-e package_arch=${local.package_arch}",
+      "-e os_arch=${var.arch}",
       "-e agent_version=${var.agent_version}",
       "-e toolbox_version=${var.toolbox_version}",
       "-e install_erlang=${var.install_erlang}",

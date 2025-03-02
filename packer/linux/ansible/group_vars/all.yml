@@ -1,13 +1,13 @@
 ---
 agent_root_dir: "/opt/semaphore/agent"
 agent_hooks_dir: "{{ agent_root_dir }}/hooks"
-agent_url: "https://github.com/semaphoreci/agent/releases/download/{{ agent_version }}/agent_Linux_x86_64.tar.gz"
+agent_url: "https://github.com/semaphoreci/agent/releases/download/{{ agent_version }}/agent_Linux_{{ os_arch }}.tar.gz"
 awscli_version: "2.4.9"
-awscli_url: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-{{ awscli_version }}.zip"
-docker_apt_repository: "deb [arch={{ arch }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+awscli_url: "https://awscli.amazonaws.com/awscli-exe-linux-{{ os_arch }}-{{ awscli_version }}.zip"
+docker_apt_repository: "deb [arch={{ package_arch }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
 docker_apt_gpg_key: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
-yq_url: "https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_{{ arch }}"
-cloudwatch_agent_url: https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/{{ arch }}/latest/amazon-cloudwatch-agent.deb
+yq_url: "https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_{{ package_arch }}"
+cloudwatch_agent_url: https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/{{ package_arch }}/latest/amazon-cloudwatch-agent.deb
 erlang_apt_gpg_key: https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
-erlang_apt_repository: "deb [arch={{ arch }}] https://packages.erlang-solutions.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} contrib"
+erlang_apt_repository: "deb [arch={{ package_arch }}] https://packages.erlang-solutions.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} contrib"
 systemd_restart_seconds: 300
