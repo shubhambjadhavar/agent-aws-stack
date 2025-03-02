@@ -103,7 +103,7 @@ build {
     extra_arguments = [
       "--skip-tags",
       "reboot",
-      "-e arch=${local.package_arch}"
+      "-e arch=${local.package_arch}",
       "-e agent_version=${var.agent_version}",
       "-e toolbox_version=${var.toolbox_version}",
       "-e install_erlang=${var.install_erlang}",
