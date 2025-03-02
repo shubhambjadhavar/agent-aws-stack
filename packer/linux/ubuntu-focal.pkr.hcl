@@ -41,17 +41,6 @@ variable "systemd_restart_seconds" {
   default = "1800"
 }
 
-locals {
-  package_arch = lookup(
-    {
-      "x86_64" = "amd64"
-      "arm64"  = "aarch64"
-    },
-    var.arch,
-    "amd64"
-  )
-}
-
 packer {
   required_plugins {
     amazon = {
@@ -104,7 +93,6 @@ build {
     extra_arguments = [
       "--skip-tags",
       "reboot",
-      "-e package_arch=${local.package_arch}",
       "-e os_arch=${var.arch}",
       "-e agent_version=${var.agent_version}",
       "-e toolbox_version=${var.toolbox_version}",
